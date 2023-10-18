@@ -24,6 +24,13 @@ namespace Training.DataAccess.Concrete.EntityFramework
                 return trainingContext.Products.SingleOrDefault(p => p.ProductId == id);
             }
         }
+        public List<Product> GetByCategoryID(int categoryId)
+        {
+            using (TrainingContext trainingContext = new TrainingContext())
+            {
+                return trainingContext.Products.Where(p => p.CategoryID == categoryId).ToList();
+            }
+        }
         public void Add(Product product) 
         {
             using (TrainingContext trainingContext = new TrainingContext())

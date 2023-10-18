@@ -15,5 +15,9 @@ namespace Training.Business.Concrete
         {  
             return _productDal.GetAll();
         }
+        public List<Product> GetByCategory(int categoryId)
+        {
+            return _productDal.GetByCategoryID(categoryId);
+        }
     }
 }
