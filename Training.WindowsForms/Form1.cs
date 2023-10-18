@@ -14,8 +14,8 @@ namespace Training.WindowsForms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ProductManager productManager=new ProductManager();
-            CategoryManager categoryManager = new CategoryManager();
+            ProductManager productManager=new ProductManager(new EfProductDal());
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
 
             dgvSource.DataSource = productManager.GetAll();
 
@@ -27,7 +27,7 @@ namespace Training.WindowsForms
 
         private void cmbCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ProductManager productManager = new ProductManager();
+            ProductManager productManager = new ProductManager(new EfProductDal());
             dgvSource.DataSource = productManager.GetByCategory((int)cmbCategories.SelectedValue);
             //using (TrainingContext trainingContext = new TrainingContext())
             //{

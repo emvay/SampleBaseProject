@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Training.DataAccess.Abstract;
 using Training.Entities.Concrete;
 
 namespace Training.DataAccess.Concrete.EntityFramework
 {
-    public class ProductDal
+    public class EfProductDal:IProductDal
     {
         public List<Product> GetAll() 
         {
