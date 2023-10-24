@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Training.DataAccess.Concrete.EntityFramework;
 using Training.Entities.Concrete;
 
-namespace Training.DataAccess.Abstract
+namespace Training.Business.Abstract
 {
-    public interface ICategoryDal:IEntityRepository<Category>
+    public interface ICategoryService
     {
         public List<Category> GetAll();
     }

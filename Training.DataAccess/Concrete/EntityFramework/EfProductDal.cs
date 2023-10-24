@@ -40,15 +40,22 @@ namespace Training.DataAccess.Concrete.EntityFramework
                 trainingContext.SaveChanges();
             }
         }
-        public void Update()
+        public void Update(Product product)
         {
-
+            using (TrainingContext trainingContext = new TrainingContext())
+            {
+                trainingContext.Products.Update(product);
+                trainingContext.SaveChanges();
+            }
         }
 
-        public void Delete()
+        public void Delete(Product product)
         {
-
+            using (TrainingContext trainingContext = new TrainingContext())
+            {
+                trainingContext.Products.Remove(product);
+                trainingContext.SaveChanges();
+            }
         }
-        
     }
 }

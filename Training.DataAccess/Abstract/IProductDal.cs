@@ -8,15 +8,15 @@ using Training.Entities.Concrete;
 
 namespace Training.DataAccess.Abstract
 {
-    public interface IProductDal
+    public interface IProductDal:IEntityRepository<Product>
     {
         public List<Product> GetAll();
 
         public Product GetById(int id);
         public List<Product> GetByCategoryID(int categoryId);
         public void Add(Product product);
-        public void Update();
+        public void Update(Product product);
 
-        public void Delete();
+        public void Delete(Product product);
     }
 }
