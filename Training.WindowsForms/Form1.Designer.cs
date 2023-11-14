@@ -110,7 +110,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1381, 452);
             Controls.Add(dgvSource);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);

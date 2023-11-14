@@ -11,48 +11,63 @@ namespace Training.WindowsForms
 
         private IProductService _productService;
         private ICategoryService _categoryService;
-
         public Form1()
         {
             InitializeComponent();
 
-            _productService= new ProductManager(new EfProductDal());
+            _productService = new ProductManager(new EfProductDal());
             _categoryService = new CategoryManager(new EfCategoryDal());
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //IProductService productManager=new ProductManager(new EfProductDal());
-            //CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-
-            dgvSource.DataSource = _productService.GetAll();
-
-            cmbCategories.DisplayMember = "CategoryName";
-            cmbCategories.ValueMember = "CategoryID";
-            cmbCategories.DataSource = _categoryService.GetAll();
-
+            LoadProducts();
+            LoadCategories();
         }
 
-        private void cmbCategories_SelectedIndexChanged(object sender, EventArgs e)
+        private void LoadCategories()
         {
-            //ProductManager productManager = new ProductManager(new EfProductDal());
+            cmbCategories.DataSource = _categoryService.GetAll();
+            cmbCategories.DisplayMember = "CategoryName";
+            cmbCategories.ValueMember = "CategoryID";
+        }
 
-            dgvSource.DataSource = _productService.GetByCategory((int)cmbCategories.SelectedValue);
-
-            //using (TrainingContext trainingContext = new TrainingContext())
-            //{
-            //    dgvSource.DataSource = trainingContext.Products.
-            //        Where(p => p.CategoryID == (int)cmbCategories.SelectedValue).ToList();
-            //}
+        private void LoadProducts()
+        {
+            dgvSource.DataSource = _productService.GetAll();
         }
 
         private void txtProducts_TextChanged(object sender, EventArgs e)
         {
-            using (TrainingContext trainingContext = new TrainingContext())
+            try
             {
-                dgvSource.DataSource = trainingContext.Products.
-                    Where(p => p.ProductName.ToLower().Contains(txtProducts.Text)).ToList();
+                if (!String.IsNullOrEmpty(txtProducts.Text))
+                {
+                    dgvSource.DataSource = _productService.GetProductsByProductName(txtProducts.Text);
+                }
+                else
+                {
+                    LoadProducts();
+                }
+
             }
+            catch
+            {
+
+            }
+        }
+
+        private void cmbCategories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvSource.DataSource = _productService.GetProductsByCategory(Convert.ToInt32(cmbCategories.SelectedValue));
+            }
+            catch
+            {
+
+            }
+
         }
     }
 }

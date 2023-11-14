@@ -8,41 +8,7 @@ using Training.Entities.Concrete;
 
 namespace Training.DataAccess.Concrete.EntityFramework
 {
-    public class EfCategoryDal:ICategoryDal
+    public class EfCategoryDal : EfEntityRepositoryBase<Category, TrainingContext>, ICategoryDal
     {
-        public List<Category> GetAll()
-        {
-            using (TrainingContext trainingContext = new TrainingContext())
-            {
-                return trainingContext.Categories.ToList();
-            }
-        }
-
-
-        public void Add(Category category)
-        {
-            
-        }
-
-
-        public void Delete(Category category)
-        {
-            
-        }
-
-
-        public Category GetById(int id)
-        {
-            using (TrainingContext trainingContext = new TrainingContext())
-            {
-                return trainingContext.Categories.SingleOrDefault(c=>c.CategoryID==id);
-            }
-        }
-
-
-        public void Update(Category category)
-        {
-            
-        }
     }
 }

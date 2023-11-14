@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Training.Entities.Concrete;
+using Training.Entities.Abstract;
 
 namespace Training.DataAccess.Abstract
 {
-    public interface IEntityRepository<T>
+    public interface IEntityRepository<T> where T : class, IEntity, new() // We are restricting the T type with the entities that are an IEntity objects and It new() can be used for them
     {
-        public List<T> GetAll();
-
-        public T GetById(int id);
-        public void Add(T entity);
-        public void Update(T entity);
-
-        public void Delete(T entity);
+        List<T> GetAll(Expression<Func<T, bool>> filter = null);
+        T Get(Expression<Func<T, bool>> filter); // (int id)
+        void Add(T entity);
+        void Update(T entity);
+        void Delete(T entity);
     }
 }
