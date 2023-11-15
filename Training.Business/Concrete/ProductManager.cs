@@ -12,6 +12,21 @@ namespace Training.Business.Concrete
             _productDal = productDal;
         }
 
+        public void Add(Product product)
+        {
+            _productDal.Add(product);
+        }
+
+        public void Update(Product product)
+        {
+            _productDal.Update(product);
+        }
+
+        public void Delete(Product product)
+        {
+            _productDal.Delete(product);
+        }
+
         public List<Product> GetAll()
         {
             return _productDal.GetAll();
@@ -26,5 +41,7 @@ namespace Training.Business.Concrete
         {
             return _productDal.GetAll(p => p.ProductName.ToLower().Contains(productName.ToLower()));
         }
+
+
     }
 }
