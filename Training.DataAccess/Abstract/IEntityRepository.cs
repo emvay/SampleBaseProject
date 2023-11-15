@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using Training.Entities.Concrete;
+﻿using System.Linq.Expressions;
 using Training.Entities.Abstract;
 
 namespace Training.DataAccess.Abstract

@@ -1,8 +1,6 @@
-using System.Linq;
 using Training.Business.Abstract;
 using Training.Business.Concrete;
 using Training.DataAccess.Concrete.EntityFramework;
-using Training.Entities.Concrete;
 
 namespace Training.WindowsForms
 {
